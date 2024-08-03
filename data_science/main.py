@@ -1,48 +1,96 @@
-import pandas as pd
+import flet as ft
 
-# data frame df
-df_train = pd.read_csv('train.csv')
+def main(page: ft.page):
+    main_column = ft.Column(
+        expand=True,
+        scroll=ft.ScrollMode.HIDDEN,
+        controls=[
+            ft.Container(
+                content=ft.Column(
+                    controls=[
+                        ft.TextField(),
+                        ft.Row(
+                            controls=[
+                                ft.Text('2.0+'),
+                                ft.Slider(expand=True),
+                            ],
+                        ),
+                        ft.Row(
+                            controls=[
+                                ft.Text('2.0+'),
+                                ft.Slider(expand=True),
+                            ],
+                        ),
+                        ft.Row(
+                            controls=[
+                                ft.Text('2.0+'),
+                                ft.Slider(expand=True),
+                            ],
+                        ),
+                    ],
+                ),
+                padding=25,
+                bgcolor=ft.colors.GREY,
+                border_radius=5
+            ),
+            ft.Row(
+                controls=[
+                    ft.Container(
+                        content=ft.Column(
+                            controls=[
+                                ft.Switch(),
+                                ft.Slider(),
+                            ]
+                        ),
+                        padding=25,
+                        bgcolor=ft.colors.GREY,
+                        border_radius=5,
+                        expand=True
+                    ),
+                    ft.Container(
+                        content=ft.Column(
+                            controls=[
+                                ft.Switch(),
+                                ft.Slider(),
+                            ]
+                        ),
+                        padding=25,
+                        bgcolor=ft.colors.GREY,
+                        border_radius=5,
+                        expand=True
+                    ),
+                    ft.Container(
+                        content=ft.Column(
+                            controls=[
+                                ft.Switch(),
+                                ft.Slider(),
+                            ]
+                        ),
+                        padding=25,
+                        bgcolor=ft.colors.GREY,
+                        border_radius=5,
+                        expand=True
+                    ),
+                ]
+            ),
+            ft.Row(
+                controls=[
+                    ft.Container(
+                        content=ft.Column(
+                            controls=[
+                                ft.Switch(),
+                                ft.Slider(),
+                            ]
+                        ),
+                        padding=25,
+                        bgcolor=ft.colors.GREY,
+                        border_radius=5,
+                        expand=True
+                    )
+                ]
+            )
+        ],
+    )
+    page.add(main_column)
 
-# first n elements
-df_train.head(20)
-
-# returs columns x rows (x,y)
-df_train.shape
-
-# view specific column
-df_train['column_name']
-
-# multiple columns
-df_train[['name','name2','name_n']]
-
-# mean
-df_train['column_name'].mean()
-
-# summary of df
-df_train.describe()
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-from scipy.stats import norm
-from sklearn.preprocessing import StandardScaler
-from scipy import stats
-import warnings
-
-# to watch plots inline 
-# %matplotlib inline
-
-df_train['SalePrice'].describe()
-
-# plot 
-sns.distplot(df_train['SalePrice'])
-
-# skew & kurt
-df_train['SalePrice'].skew()
-
-
-
-
-
-
-
+ft.app(target=main)
